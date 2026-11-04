@@ -21,8 +21,8 @@ server baseline or a vulnerability-free image.
 - **Public hostname:** `amman-calc.134-209-120-185.sslip.io` (learner agreed).
 - **New launch or adopted deployment, and reason:** Successfully completed a new calculator deployment. The prepared launch returned `status: passed`, `provenance: launched`, and `new_launch: true`. Public HTTPS and API checks passed. All four existing containers passed preservation checks.
 
-- **Own issue / feature branch:** [GitHub Issue #1](https://github.com/Singh01113/my-server-studio/issues/1) has been created. Feature branch: `codex/studio-001-calculator`. Pull request, CI, and merge are still pending.
-- **Agreed scope or actual access/configuration gap:** Use the supplied pinned image, existing `hosting-web` network and existing Traefik HTTPS. Preserve existing websites, containers and server configuration; do not remove, replace or restart existing services. Doctor confirmed Docker/Compose access without sudo. Laptop Docker Desktop is unavailable, so full E2E remains pending in the eventual PR's CI.
+- **Own issue / feature branch:** [GitHub Issue #1](https://github.com/Singh01113/my-server-studio/issues/1) was created. Feature branch: `codex/studio-001-calculator`. [Pull Request #2](https://github.com/Singh01113/my-server-studio/pull/2) is open, and all three GitHub CI checks passed. Final documentation review and merge remain.
+- **Agreed scope or actual access/configuration gap:** Used the supplied pinned image, existing `hosting-web` network, and Traefik HTTPS setup. All four existing containers passed preservation checks. Docker Desktop was unavailable locally, so the two browser E2E tests were not run on my laptop. Both tests subsequently passed in GitHub CI for PR #2.
 
 Release sources: the [pinned selection](studio/calculator-release.json) identifies
 commit `4600202bad42da0c5ffb11d83ce8364671293d3d`, its
@@ -47,22 +47,22 @@ The deployment was completed successfully using `python3 studio.py launch`. The 
 
 The pinned Docker image and expected commit matched. Public HTTPS and API checks passed. All four existing containers passed preservation checks.
 
-Sanitized runtime evidence was exported to [studio/evidence.json](studio/evidence.json). The two full browser E2E tests remain pending in GitHub CI.
+Sanitized runtime evidence was exported to [studio/evidence.json](studio/evidence.json). Both browser E2E tests passed in GitHub CI for PR #2. The 91 unit/integration tests also passed.
 
 ## Evidence to keep
 
 
 | Evidence | Actual result / link |
 |---|---|
-| Prepared tests | `python3 studio.py check --fast` passed Black, Pylint, and 91 pytest tests. Two browser E2E tests were deselected because local Docker was unavailable. Full E2E remains pending in GitHub CI. |
+| Prepared tests | Local fast checks passed Black, Pylint, and 91 tests. GitHub CI passed Black, Pylint, 91 unit/integration tests, and 2 real-image Chromium browser E2E tests. [Passing Studio CI](https://github.com/Singh01113/my-server-studio/actions/runs/41933238004/job/126935154484). |
 | Deployment and HTTPS | [Live calculator](https://amman-calc.134-209-120-185.sslip.io) deployed successfully. [studio/evidence.json](studio/evidence.json) confirms `status: passed`, `new_launch: true`, matching image and commit, and trusted public HTTPS. |
 | API verification | The deployed calculator returned HTTP 200 with result 42 for 6 × 7. Division by zero returned HTTP 400, and invalid numeric input returned HTTP 422. |
 | Existing services preserved | Four existing containers passed preservation checks. Evidence reports `checked_count: 4` and `unchanged: true` for container identity, state, and published ports. |
 | My browser observation | I tested 9 × 4 on my own calculator. The Browser Result and API Result both displayed 36, and the page showed "Results match." |
-| Learning summary | [LEARNING.md](LEARNING.md) includes the classroom observation and request-path prediction. My deployed-browser observation, check interpretation, and keep/revise decision still need final review and documentation. |
+| Learning summary | [LEARNING.md](LEARNING.md) includes my classroom prediction, check interpretation, deployed calculator browser observation, keep decision, and AI assistance disclosure. I reviewed the summary against my actual work and test results. |
 | GitHub issue | [STUDIO-001 Issue #1](https://github.com/Singh01113/my-server-studio/issues/1) was created successfully. |
-| Pull request and CI | Pending. The feature branch still needs to be committed, pushed, tested in GitHub CI, and merged into main. |
-| Accuracy review | Pending final review of SPEC.md, LEARNING.md, and sanitized evidence before publishing. |
+| Pull request and CI | [GitHub PR #2](https://github.com/Singh01113/my-server-studio/pull/2) was created successfully. All three GitHub checks passed, including 91 unit/integration tests and 2 Chromium browser E2E tests. [Passing CI results](https://github.com/Singh01113/my-server-studio/actions/runs/41933238004/job/126935154484). The pull request has not been merged into main yet. |
+| Accuracy review | I reviewed my learning explanations and deployment results against my actual work. SPEC.md, LEARNING.md, and studio/evidence.json are included in PR #2. Final review of the updated PR diff and evidence is still required before merging. |
 
 Link the exported `studio/evidence.json`, actual CI and issue/PR when available.
 CI does not deploy this server. A fixture, green check, timestamp, closed issue

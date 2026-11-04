@@ -6,7 +6,7 @@ work. Leave missing contributions Pending. A learner can review, correct or
 remove excerpts before publication; accuracy approval is not proof of learning.
 Label role-play honestly rather than treating it as an actual learner response.
 
-**Lesson:** STUDIO-001. **Available conversation context:** This coaching chat, from local setup through agreed scope and pre-launch checks. Draft; not yet reviewed for publication.
+**Lesson:** STUDIO-001. **Available conversation context:** This coaching chat covers local setup, deployment, verification, and GitHub CI. I reviewed the summary against my actual work and observations.
 
 ## Try · classroom example
 
@@ -37,7 +37,7 @@ I ran the prepared fast checks before deploying my calculator. Black and Pylint 
 
 These results showed that the code passed the available local checks, but they didn't prove that the calculator would work on my server. After deploying, I verified that HTTPS worked, the calculator API returned correct results, and all four existing containers were preserved.
 
-I still need the full browser E2E tests to pass in GitHub CI.
+Both browser E2E tests passed in GitHub CI for PR #2. The 91 unit/integration tests also passed. These automated results support the calculator's correctness, while my own browser test confirms what I observed on my deployed website.
 
 ## Browser observation
 
@@ -55,7 +55,7 @@ I decided to keep the calculator deployment because it passed the HTTPS and API 
 
 The deployment also preserved all four existing Docker containers, so I didn't need to change or replace my other services.
 
-I still need to finish the GitHub pull request and run the full browser E2E tests through CI. If those tests fail, I'll review the errors and revise the work before merging.
+Both browser E2E tests also passed in GitHub CI. PR #2 still needs final documentation review before merging into main.
 
 ## Review
 
@@ -63,9 +63,9 @@ I reviewed the learning summary and checked it against the tests and observation
 
 I used ChatGPT and Codex to help understand the assignment, inspect my server, run the prepared checks, and draft the documentation. I also tested the classroom calculator and my deployed calculator myself.
 
-The deployment evidence confirms the successful launch, HTTPS verification, and preservation of my existing containers. The full browser E2E tests and GitHub CI are still pending.
+The deployment evidence confirms the successful launch, HTTPS verification, and preservation of my existing containers. GitHub CI also passed all 91 unit/integration tests and both browser E2E tests.
 
-I reviewed the explanations to make sure they reflect what I did and learned. I will check the final changes before committing them to GitHub.
+I reviewed the explanations against my actual work and test results. The initial documentation was committed to GitHub, and I am updating it with the final CI evidence before merging.
 
 ## AI work and next step
 
@@ -75,6 +75,6 @@ The prepared fast checks passed Black, Pylint, and 91 tests. Two browser E2E tes
 
 I successfully deployed the supplied calculator using `python3 studio.py launch`. The deployment passed the HTTPS, image verification, API, and existing-container preservation checks. I also tested 9 × 4 myself and confirmed both results displayed 36.
 
-GitHub Issue #1 was created, and the deployment evidence was exported to `studio/evidence.json`. ChatGPT and Codex assisted with the instructions and documentation, which I reviewed against my actual results.
+The deployment evidence was exported to studio/evidence.json. ChatGPT and Codex assisted with the instructions and documentation, which I reviewed against my actual results.
 
-My next steps are to commit and push my changes, create a pull request, verify the full GitHub CI tests, and merge the completed work into `main`.
+GitHub Issue #1 and Pull Request #2 were successfully created. All three GitHub CI checks passed, including the two Chromium browser E2E tests. My next step is to commit and push these final documentation corrections, review the updated PR and its checks, and merge the completed work into main.
